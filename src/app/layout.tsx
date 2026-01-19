@@ -1,18 +1,25 @@
 import React from "react";
-import { QueryProvider } from '@/providers/query-provider'
+import type { Metadata } from 'next'
+import { ThemeProvider, QueryProvider } from '@/providers'
 import './globals.css'
+
+export const metadata: Metadata = {
+    title: 'Appointy',
+}
 
 export default function RootLayout({
                                        children,
-                                   } : {
+                                   }: {
     children: React.ReactNode
 }) {
     return (
-        <html lang="ru">
+        <html lang="ru" suppressHydrationWarning>
         <body>
-        <QueryProvider>
-            {children}
-        </QueryProvider>
+        <ThemeProvider>
+            <QueryProvider>
+                {children}
+            </QueryProvider>
+        </ThemeProvider>
         </body>
         </html>
     )
