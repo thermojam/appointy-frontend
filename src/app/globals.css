@@ -4,17 +4,18 @@
 
 @layer base {
     :root {
-        --background: 255 255 255;
-        --foreground: 17 24 39;
+        --background: 254 254 254;
+        --foreground: 30 30 30;
     }
 
     html.dark {
-        --background: 17 24 39;
-        --foreground: 243 244 246;
+        --background: 30 30 30;
+        --foreground: 254 254 254;
     }
 
     body {
         background-color: rgb(var(--background));
         color: rgb(var(--foreground));
+        font-family: Nunito, sans-serif;
     }
 }

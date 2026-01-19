@@ -3,7 +3,7 @@ import { Logo } from "./logo"
 
 export function Header() {
     return (
-        <header className="flex items-center justify-between p-[10px]">
+        <header className="max-w-[1400px] my-[20px]  mx-auto flex items-center justify-between">
             <Logo />
             <ThemeToggle />
         </header>

@@ -19,13 +19,17 @@ export function ThemeToggle() {
             type="button"
             aria-label="Toggle theme"
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="rounded-md p-1 transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="cursor-pointer"
             disabled={!mounted}
         >
             {mounted ? (
-                isDark ? <Moon className="h-6 w-6" /> : <Sun className="h-6 w-6" />
+                isDark ? (
+                    <Sun className="h-8 w-8" />
+                ) : (
+                    <Moon className="h-8 w-8" />
+                )
             ) : (
-                <span className="block h-6 w-6" />
+                <span className="block h-8 w-8" />
             )}
         </button>
     )
