@@ -1,5 +1,5 @@
-import { ThemeToggle } from "./theme-toggle"
-import { Logo } from "./logo"
+import { ThemeToggle } from "./ThemeToggle"
+import { Logo } from "./Logo"
 
 export function Header() {
     return (

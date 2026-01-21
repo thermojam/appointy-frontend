@@ -1,16 +1,26 @@
 @import "tailwindcss";
 
-@tailwind utilities;
-
 @layer base {
     :root {
         --background: 254 254 254;
+        --surface: 255 255 255;
+        --border: 220 220 220;
         --foreground: 30 30 30;
+        --secondary: 120 120 120;
+        --accent: 0 0 0;
+        --button-bg: 30 30 30;
+        --button-text: 255 255 255;
     }
 
     html.dark {
-        --background: 30 30 30;
+        --background: 18 18 18;
+        --surface: 28 28 28;
+        --border: 60 60 60;
         --foreground: 254 254 254;
+        --secondary: 180 180 180;
+        --accent: 255 255 255;
+        --button-bg: 254 254 254;
+        --button-text: 18 18 18;
     }
 
     body {
