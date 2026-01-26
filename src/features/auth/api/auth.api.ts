@@ -10,7 +10,7 @@ export interface RegisterDto {
 
 
 export interface LoginDto {
-    login: string
+    username: string
     password: string
 }
 

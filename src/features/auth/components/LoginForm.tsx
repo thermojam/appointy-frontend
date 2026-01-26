@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const loginSchema = yup.object({
-    login: yup.string().required('Введите логин'),
+    username: yup.string().required('Введите логин'),
     password: yup.string().required('Введите пароль'),
 });
 
@@ -43,7 +43,7 @@ export function LoginForm() {
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
                         <FormField<LoginFormValues>
-                            name="login"
+                            name="username"
                             placeholder="Логин"
                             register={register}
                             errors={errors}
