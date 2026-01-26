@@ -1,4 +1,4 @@
-import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
+import axios, {AxiosError} from "axios";
 
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -8,11 +8,16 @@ const api = axios.create({
     },
 });
 
-api.interceptors.request.use(
-    (config: InternalAxiosRequestConfig) => {
-        return config;
-    },
-    (error) => Promise.reject(error)
+api.interceptors.response.use(
+    (response) => response,
+    (error: AxiosError) => {
+        if (error.response?.status === 401) {
+            if (typeof window !== 'undefined') {
+                window.location.href = '/auth/login';
+            }
+        }
+        return Promise.reject(error);
+    }
 );
 
 type HttpOptions = {
@@ -36,7 +41,7 @@ export async function http<T>(
         return res.data;
     } catch (e) {
         const error = e as AxiosError<any>;
-        throw error.response?.data ?? { message: "Unknown error" };
+        throw error.response?.data ?? {message: "Unknown error"};
     }
 }
 
