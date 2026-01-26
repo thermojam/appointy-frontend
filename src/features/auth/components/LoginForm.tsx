@@ -39,7 +39,7 @@ export function LoginForm() {
             <div className="w-full max-w-md rounded-[40px] border bg-[rgb(var(--surface))] border-[rgb(var(--border))] shadow-xl">
                 <div className="p-6 text-center sm:p-10">
                     <Title className="mb-1 text-xl">С возвращением!</Title>
-                    <Subtitle className="mb-6 text-sm">Рады видеть вас снова</Subtitle>
+                    <Subtitle className="mb-6 text-sm">Рады видеть вас снова!</Subtitle>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-1">
                         <FormField<LoginFormValues>
