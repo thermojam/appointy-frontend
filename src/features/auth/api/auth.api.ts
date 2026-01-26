@@ -1,8 +1,7 @@
-import { http } from "@/shared/api/http"
+import {http} from "@/shared/api/http"
 
 export type Role = "client" | "master"
 
-// Убираем роль отсюда, бэкенд её не ждет при регистрации
 export interface RegisterDto {
     username: string
     password: string
@@ -33,7 +32,7 @@ export interface ProfileResponse {
 
 
 export const authApi = {
-    register(data: RegisterDto) {
+    async register(data: RegisterDto) {
         return http("/auth/register", {
             method: "POST",
             body: data,
