@@ -1,6 +1,8 @@
+import Link from 'next/link';
+
 export function Logo() {
     return (
-        <div className="flex items-center text-foreground">
+        <Link href="/" className="flex items-center text-foreground">
             <svg
                 width="42"
                 height="52"
@@ -41,6 +43,6 @@ export function Logo() {
             >
         ppointy
       </span>
-        </div>
+        </Link>
     )
 }

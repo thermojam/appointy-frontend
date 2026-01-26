@@ -2,17 +2,35 @@ import { http } from "@/shared/api/http"
 
 export type Role = "client" | "master"
 
+// Убираем роль отсюда, бэкенд её не ждет при регистрации
 export interface RegisterDto {
     username: string
     password: string
-    role: Role
 }
-
 
 export interface LoginDto {
     username: string
     password: string
 }
+
+export interface LoginResponse {
+    message: string;
+    user: {
+        id: string;
+        username: string;
+    };
+}
+
+export interface ProfileResponse {
+    id: string;
+    username: string;
+    role: Role;
+    email: string | null;
+    phone: string | null;
+    firstName: string | null;
+    lastName: string | null;
+}
+
 
 export const authApi = {
     register(data: RegisterDto) {
@@ -23,14 +41,14 @@ export const authApi = {
     },
 
     login(data: LoginDto) {
-        return http("/auth/login", {
+        return http<LoginResponse>("/auth/login", {
             method: "POST",
             body: data,
         })
     },
 
     profile() {
-        return http("/auth/profile")
+        return http<ProfileResponse>("/auth/profile")
     },
 
     logout() {

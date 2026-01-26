@@ -8,30 +8,11 @@ const api = axios.create({
     },
 });
 
-// 1. Интерцептор для добавления токена к запросам
 api.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-        const token = localStorage.getItem("accessToken");
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
         return config;
     },
     (error) => Promise.reject(error)
-);
-
-// 2. Интерцептор для сохранения токена из ответа
-api.interceptors.response.use(
-    (response) => {
-        if (response.data && response.data.accessToken) {
-            localStorage.setItem("accessToken", response.data.accessToken);
-        }
-        return response;
-    },
-    (error) => {
-        // Можно добавить логику обработки истекшего токена, если нужно
-        return Promise.reject(error);
-    }
 );
 
 type HttpOptions = {
@@ -55,10 +36,8 @@ export async function http<T>(
         return res.data;
     } catch (e) {
         const error = e as AxiosError<any>;
-        // Перехватчики уже обработали ошибку, просто пробрасываем ее дальше
         throw error.response?.data ?? { message: "Unknown error" };
     }
 }
 
-// Экспортируем инстанс axios, если он нужен где-то еще
 export default api;
