@@ -20,9 +20,11 @@ export function RoleSelector({
                         className={`
               flex-1 h-[48px] rounded-[14px] border
               transition
-              ${active
-                            ? "border-[rgb(var(--accent))]"
-                            : "border-[rgb(var(--border))]"}
+              ${
+                            active
+                                ? "border-[rgb(var(--accent))] bg-[rgb(var(--accent)/0.08)]"
+                                : "border-[rgb(var(--border))]"
+                        }
             `}
                     >
                         {role === "client" ? "Клиент" : "Мастер"}

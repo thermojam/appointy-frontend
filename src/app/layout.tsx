@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from 'next'
 import { ThemeProvider, QueryProvider } from '@/providers'
 import './globals.css'
+import {Header} from "@/components/header/Header";
 
 export const metadata: Metadata = {
     title: 'Appointy',
@@ -17,6 +18,7 @@ export default function RootLayout({
         <body>
         <ThemeProvider>
             <QueryProvider>
+                <Header/>
                 {children}
             </QueryProvider>
         </ThemeProvider>

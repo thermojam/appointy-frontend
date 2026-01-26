@@ -1,11 +1,6 @@
-import {Header} from "@/components/header/Header";
-import {RegisterForm} from "@/features/auth/components/RegisterForm";
+import { redirect } from "next/navigation"
 
-export default function App() {
-    return (
-        <main className="min-h-screen w-full bg-background text-foreground transition-colors">
-            <Header/>
-            <RegisterForm/>
-        </main>
-    )
+export default function HomePage() {
+    redirect("/auth/register")
 }
+

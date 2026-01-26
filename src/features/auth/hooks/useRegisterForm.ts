@@ -1,12 +1,15 @@
-"use client"
-
 import { useForm } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import { registerSchema, RegisterFormValues } from "../schemas/register.schema"
+import type { Role } from "../api/auth.api"
+
+interface RegisterFormValues {
+    login: string
+    password: string
+    passwordConfirm: string
+    role: Role
+}
 
 export function useRegisterForm() {
     return useForm<RegisterFormValues>({
-        resolver: yupResolver(registerSchema),
         defaultValues: {
             login: "",
             password: "",
