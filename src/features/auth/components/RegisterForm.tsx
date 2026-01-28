@@ -6,18 +6,7 @@ import {useRegister} from '../hooks/useAuth';
 import {FormField, Title, Subtitle, RadioGroupField} from '@/components/ui';
 import {RegisterDto, Role} from '../api/auth.api';
 import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-
-const registerSchema = yup.object({
-    username: yup.string().required('Введите логин'),
-    password: yup.string().min(6, 'Пароль должен быть не менее 6 символов').required('Введите пароль'),
-    passwordConfirmation: yup.string()
-        .oneOf([yup.ref('password')], 'Пароли должны совпадать')
-        .required('Подтвердите пароль'),
-    role: yup.string().oneOf(['client', 'master'] as const).required('Выберите роль'),
-});
-
-type RegisterFormValues = yup.InferType<typeof registerSchema>;
+import { registerSchema, RegisterFormValues } from '../schemas/register.schema';
 
 const roleOptions: { value: Role, label: string }[] = [
     {value: 'client', label: 'Я - клиент'},
@@ -48,11 +37,8 @@ export function RegisterForm() {
 
         registerUser(apiData, {
             onSuccess: () => {
-                if (data.role === 'client') {
-                    router.push('/onboarding/client');
-                } else if (data.role === 'master') {
-                    router.push('/onboarding/master');
-                }
+                console.log(`Успешная регистрация для роли: ${data.role}. Перенаправление...`);
+                router.push(`/onboarding?role=${data.role}`);
             },
         });
     };
