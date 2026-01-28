@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { forwardRef, useImperativeHandle, useState, ChangeEvent } from 'react';
 import { interestsSchema, InterestsFormValues } from '@/features/onboarding/schemas/step2_interests.schema';
 import { Input } from '@/components/ui/Input';
-import { Search } from 'lucide-react';
+// import { Search } from 'lucide-react';
 
 interface Step2InterestsProps {
     onValid: (data: InterestsFormValues) => void;
@@ -46,9 +46,7 @@ export const Step2_Interests = forwardRef<Step2Ref, Step2InterestsProps>(({ onVa
 
     return (
         <form onSubmit={handleSubmit(onValid)} className="space-y-6">
-            {/* --- Поле для поиска интересов --- */}
             <div className="relative flex items-center">
-                <Search className="absolute left-4 h-5 w-5 text-muted-foreground" />
                 <Input
                     id="search-interests"
                     placeholder="Интересы"
@@ -58,7 +56,6 @@ export const Step2_Interests = forwardRef<Step2Ref, Step2InterestsProps>(({ onVa
                 />
             </div>
 
-            {/* --- Теги с интересами --- */}
             <Controller
                 name="interests"
                 control={control}
