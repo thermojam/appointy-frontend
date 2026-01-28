@@ -2,8 +2,8 @@ import * as yup from "yup"
 
 export const registerSchema = yup.object({
     username: yup.string().required("Введите имя пользователя"),
-    password: yup.string().min(6, "Минимум 6 символов").required(),
-    passwordConfirm: yup
+    password: yup.string().min(6, "Минимум 6 символов").required("Введите пароль"),
+    passwordConfirmation: yup
         .string()
         .oneOf([yup.ref("password")], "Пароли не совпадают")
         .required("Подтвердите пароль"),
