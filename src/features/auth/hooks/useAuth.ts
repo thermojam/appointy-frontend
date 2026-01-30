@@ -19,3 +19,9 @@ export const useProfile = () => {
         queryFn: () => authApi.profile(),
     });
 };
+
+export const useLogout = () => {
+    return useMutation({
+        mutationFn: () => authApi.logout(),
+    });
+};

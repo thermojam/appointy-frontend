@@ -1,11 +1,12 @@
 "use client";
-
 import { sidebarMenu } from "./sidebar-data";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Logo } from "../header/Logo";
 import { LogOut } from "lucide-react";
 import { MenuLink } from "./MenuLink";
 import { Avatar } from "../ui/Avatar";
+import { useLogout } from "@/features/auth/hooks/useAuth";
+
 
 const isActivePage = (pathname: string, pageHref: string) => {
     return pathname.startsWith(pageHref);
@@ -13,6 +14,16 @@ const isActivePage = (pathname: string, pageHref: string) => {
 
 export function Sidebar() {
     const pathname = usePathname();
+    const router = useRouter();
+    const { mutate: logout } = useLogout();
+
+    const handleLogout = () => {
+        logout(undefined, {
+            onSuccess: () => {
+                router.push('/auth/login');
+            },
+        });
+    };
 
     return (
         <aside className="flex flex-col w-2xs">
@@ -39,7 +50,10 @@ export function Sidebar() {
                     <p className="font-semibold">Анна</p>
                     <p className="text-xs text-neutral-500">anna-nickname</p>
                 </div>
-                <button className="border border-neutral-200 text-neutral-500 rounded-lg flex items-center justify-center w-12 h-12 ">
+                <button
+                    onClick={handleLogout}
+                    className="border border-neutral-200 text-neutral-500 rounded-lg flex items-center justify-center w-12 h-12 "
+                >
                     <LogOut />
                 </button>
             </div>
