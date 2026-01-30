@@ -1,7 +1,6 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
-// ИЗМЕНЕНИЕ: Исправлен путь импорта
 import { updateMasterProfile, UpdateMasterProfileDto } from '../api/onboarding.api';
 
 /**

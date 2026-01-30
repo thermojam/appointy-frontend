@@ -1,25 +1,14 @@
 'use client';
 
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { forwardRef, useImperativeHandle } from 'react';
 
 import { bookingRulesSchema, BookingRulesFormValues } from '../schemas/step4.schema';
 
-const Input = (props: any) => <input {...props} className="border-border bg-surface text-foreground placeholder:text-secondary border p-3 rounded-lg w-full" />;
-const ErrorMessage = ({ children }: { children?: React.ReactNode }) => <p className="text-red-500 text-sm mt-1">{children}</p>;
 const Label = (props: any) => <label {...props} className="block text-base font-medium text-foreground" />;
-const HelperText = ({ children }: { children?: React.ReactNode }) => <p className="text-sm text-secondary mt-1 mb-2">{children}</p>;
-
-const InputWithAddon = ({ addon, ...props }: { addon: string } & React.ComponentProps<'input'>) => (
-    <div className="relative">
-        <Input {...props} />
-        <div className="absolute inset-y-0 right-0 flex items-center pr-4 text-secondary">
-            <span>{addon}</span>
-        </div>
-    </div>
-);
-
+const Switch = (props: any) => <div className='w-12 h-6 bg-muted rounded-full relative'><div className="w-4 h-4 bg-white rounded-full absolute top-1 left-1"></div></div>; // Улучшенная заглушка
+const Select = (props: any) => <select {...props} className="border-border bg-surface text-foreground placeholder:text-secondary border p-3 rounded-lg w-full" />;
 
 interface Step4BookingRulesProps {
     onValid: (data: BookingRulesFormValues) => void;
@@ -32,57 +21,46 @@ export interface Step4Ref {
 
 export const Step4_BookingRules = forwardRef<Step4Ref, Step4BookingRulesProps>(({ onValid, initialData }, ref) => {
 
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<BookingRulesFormValues>({
+    const { handleSubmit } = useForm<BookingRulesFormValues>({
         resolver: yupResolver(bookingRulesSchema),
-        defaultValues: {
-            bookingAllowedDays: initialData?.bookingAllowedDays || 7,
-            cancelAllowedHours: initialData?.cancelAllowedHours || 24,
-        }
     });
 
+    // TODO: Когда бэкенд будет готов, здесь будет реальная логика.
+    // Сейчас onValid просто переведет на следующий шаг без отправки данных.
     useImperativeHandle(ref, () => ({
-        triggerSubmit: handleSubmit(onValid)
+        // Передаем пустой объект, так как данных для сохранения нет
+        triggerSubmit: handleSubmit(() => onValid({}))
     }));
 
-    const formFields = [
-        {
-            name: "bookingAllowedDays",
-            label: "Доступность записи",
-            helper: "На сколько дней вперед клиенты могут забронировать ваше время?",
-            addon: "дней",
-        },
-        {
-            name: "cancelAllowedHours",
-            label: "Отмена записи",
-            helper: "За сколько часов до начала клиент может бесплатно отменить запись?",
-            addon: "часов",
-        },
-    ];
-
     return (
-        <div className="space-y-6">
-            {formFields.map(item => {
-                const { name, label, helper, addon } = item as any;
-                return (
-                    <div key={name}>
-                        <Label htmlFor={name}>{label}</Label>
-                        <HelperText>{helper}</HelperText>
-                        <Controller
-                            name={name}
-                            control={control}
-                            render={({ field }) => (
-                                <InputWithAddon {...field} type="number" id={name} addon={addon} />
-                            )}
-                        />
-                        <ErrorMessage>{errors[name as keyof BookingRulesFormValues]?.message}</ErrorMessage>
-                    </div>
-                )
-            })}
-        </div>
+        <form onSubmit={handleSubmit(() => onValid({}))} className="space-y-8">
+            {/* TODO: Эти поля должны быть подключены к react-hook-form, как только появятся в схеме */}
+            <div className="flex items-center justify-between p-4 border rounded-lg">
+                <div>
+                    <Label>Требовать подтверждения бронирования</Label>
+                    <p className='text-sm text-secondary mt-1'>Если параметр выключен, бронирование подтверждается автоматически.</p>
+                </div>
+                <Switch />
+            </div>
+
+            <div>
+                <Label className='mb-2'>Максимальное предварительное бронирование</Label>
+                <Select>
+                    <option>1 неделя</option>
+                    <option>2 недели</option>
+                    <option>1 месяц</option>
+                </Select>
+            </div>
+
+            <div>
+                <Label className='mb-2'>Минимальное время отмены записи</Label>
+                <Select>
+                    <option>за 12 часов</option>
+                    <option>за 24 часа</option>
+                    <option>за 2 дня</option>
+                </Select>
+            </div>
+        </form>
     )
 });
 
