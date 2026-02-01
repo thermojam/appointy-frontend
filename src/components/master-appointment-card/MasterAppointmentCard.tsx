@@ -13,10 +13,10 @@ export function MasterAppointementCard({
     appointment,
 }: MasterAppointementCardProps) {
     return (
-        <div className="w-full relative border border-neutral-300 rounded-2xl p-2 flex flex-col gap-4">
+        <div className="w-full relative border border-neutral-300 rounded-2xl p-4 flex flex-col gap-4">
             <StatusBadge
                 status={appointment.status}
-                className="absolute right-2 top-2"
+                className="absolute right-4 top-4"
             />
             <div className="space-y-1">
                 <div className="flex gap-2 items-center">

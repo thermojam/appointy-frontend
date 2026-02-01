@@ -25,7 +25,7 @@ export function Sidebar() {
     };
 
     return (
-        <aside className="flex flex-col w-2xs">
+        <aside className="sticky top-0 h-dvh flex flex-col w-2xs">
             <div className="flex items-center justify-center border-r border-neutral-200 p-4">
                 <Logo />
             </div>
