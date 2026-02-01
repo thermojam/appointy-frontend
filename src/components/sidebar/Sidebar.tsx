@@ -7,9 +7,8 @@ import { MenuLink } from "./MenuLink";
 import { Avatar } from "../ui/Avatar";
 import { useLogout } from "@/features/auth/hooks/useAuth";
 
-
 const isActivePage = (pathname: string, pageHref: string) => {
-    return pathname.startsWith(pageHref);
+    return pathname === pageHref;
 };
 
 export function Sidebar() {
@@ -20,7 +19,7 @@ export function Sidebar() {
     const handleLogout = () => {
         logout(undefined, {
             onSuccess: () => {
-                router.push('/auth/login');
+                router.push("/auth/login");
             },
         });
     };
