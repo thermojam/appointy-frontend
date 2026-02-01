@@ -39,7 +39,7 @@ export const appointments: IAppointment[] = [
         cancelledAt: "2024-01-10T09:15:00",
         cancelledBy: "CLIENT",
         cancelReason: "Изменение планов",
-        createdAt: "2024-01-09T14:20:00",
+        createdAt: "2025-12-09T14:20:00",
         updatedAt: "2024-01-09T10:30:00",
     },
     {
@@ -51,7 +51,7 @@ export const appointments: IAppointment[] = [
         endTime: "2024-01-15T11:00:00",
         price: 2500,
         status: "COMPLETED",
-        createdAt: "2024-01-10T08:45:00",
+        createdAt: "2025-11-10T08:45:00",
         // notes: "Запись завершена успешно",
         updatedAt: "2024-01-09T10:30:00",
     },
@@ -67,7 +67,7 @@ export const appointments: IAppointment[] = [
         cancelledAt: "2024-01-11T16:30:00",
         cancelledBy: "MASTER",
         cancelReason: "Болезнь мастера",
-        createdAt: "2024-01-10T10:15:00",
+        createdAt: "2026-01-01T10:15:00",
         updatedAt: "2024-01-09T10:30:00",
     },
     {
@@ -92,7 +92,7 @@ export const appointments: IAppointment[] = [
         endTime: "2024-01-16T12:00:00",
         price: 2500,
         status: "CONFIRMED",
-        createdAt: "2024-01-11T14:30:00",
+        createdAt: "2025-01-11T14:30:00",
         updatedAt: "2024-01-09T10:30:00",
     },
     {

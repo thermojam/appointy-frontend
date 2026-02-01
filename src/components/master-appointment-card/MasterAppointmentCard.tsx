@@ -1,8 +1,9 @@
-import { Calendar, User } from "lucide-react";
+import { Calendar, Flag, User, XSquare } from "lucide-react";
 import { StatusBadge } from "./StatusBadge";
 import { IAppointment } from "@/shared/types/appointment";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { ru } from "date-fns/locale";
+import { Button } from "../ui/Button";
 
 interface MasterAppointementCardProps {
     appointment: IAppointment;
@@ -47,8 +48,14 @@ export function MasterAppointementCard({
                 })}
             </p>
             <div className="flex gap-2">
-                <button className="flex-1">отменить</button>
-                <button className="flex-1">завершить</button>
+                <Button variant="danger" className="flex-1">
+                    <XSquare className="size-5" /> Отменить
+                </Button>
+
+                <Button className="flex-1">
+                    <Flag className="size-5" />
+                    Завершить
+                </Button>
             </div>
         </div>
     );
