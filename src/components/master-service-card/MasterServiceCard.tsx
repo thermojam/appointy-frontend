@@ -1,4 +1,4 @@
-import { Clock, HandCoins, ImagePlus, PenBox, Trash2 } from "lucide-react";
+import { Clock, HandCoins, ImageIcon, PenBox, Trash2 } from "lucide-react";
 import { Button } from "../ui/Button";
 import { IService } from "@/shared/types/service";
 import Image from "next/image";
@@ -21,8 +21,8 @@ export function MasterServiceCard({ service }: MasterServiceCardProps) {
                     unoptimized // только для тестовых данных
                 />
             ) : (
-                <div className="size-40 border border-neutral-300 rounded-lg flex items-center justify-center">
-                    <ImagePlus />
+                <div className="bg-neutral-100 size-40 border border-neutral-300 rounded-lg flex items-center justify-center">
+                    <ImageIcon />
                 </div>
             )}
             <div className="py-2 px-2 flex flex-col gap-2 grow">
