@@ -29,16 +29,17 @@ export function Calendar({ selectedDate, setSelectedDate }: CalendarProps) {
                     month_caption: "mb-4 font-bold",
                     nav: "absolute right-0",
                     month_grid: "w-full",
-                    day: "text-center p-0.5 rounded-lg hover:outline hover:outline-neutral-300",
-                    day_button: "w-10 h-10 hover:cursor-pointer",
-                    selected: "rounded-lg bg-neutral-900 text-neutral-50",
-                    today: "rounded-lg outline outline-green-700 text-green-700",
+                    day: "text-center p-0.5 ",
+                    day_button:
+                        "w-10 h-10 rounded-lg  hover:outline hover:outline-neutral-300 hover:cursor-pointer",
+                    selected: "*:bg-neutral-900 *:text-neutral-50",
+                    today: " *:outline *:outline-green-700 *:text-green-700",
                     disabled: "opacity-50",
                     weekday: "text-neutral-500 font-normal text-sm",
                     week_number: "text-neutral-400 font-normal text-xs pr-4",
                 }}
                 modifiersClassNames={{
-                    scheduled: "rounded-lg bg-green-200",
+                    scheduled: "*:bg-green-200",
                 }}
             />
             <div className="flex gap-4 flex-wrap mt-6">
