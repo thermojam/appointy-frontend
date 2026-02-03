@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Badge } from "./Badge";
-import { DynamicIcon, IconName } from "lucide-react/dynamic";
 import clsx from "clsx";
+import { LucideIcon } from "lucide-react";
 
 interface MenuLinkProps {
     title: string;
     href: string;
-    icon: IconName;
+    icon: LucideIcon;
     badge?: number;
     isActive?: boolean;
 }
@@ -18,6 +18,7 @@ export function MenuLink({
     badge,
     isActive = false,
 }: MenuLinkProps) {
+    const Icon = icon;
     return (
         <Link
             href={href}
@@ -29,7 +30,7 @@ export function MenuLink({
             )}
         >
             <div className="flex gap-2 grow pr-2 ">
-                <DynamicIcon name={icon} />
+                <Icon />
                 <span className="text-md font-semibold">{title}</span>
             </div>
             {badge && <Badge number={badge} />}

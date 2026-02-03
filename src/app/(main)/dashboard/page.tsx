@@ -1,13 +1,12 @@
-import { DashboardHeader } from "@/components/dashboard-header/DashboardHeader";
+import { DashboardMain } from "@/components/dashboard-main/DashboardMain";
 
 export default function DashboardMainPage() {
     return (
-        <>
-            <DashboardHeader
-                title="С возвращением, Анна!"
-                description="Вот краткий обзор вашего бизнеса на сегодня:"
-            />
-            <main>content</main>
-        </>
+        <DashboardMain
+            title="С возвращением, Анна!"
+            description="Вот краткий обзор вашего бизнеса на сегодня:"
+        >
+            content
+        </DashboardMain>
     );
 }

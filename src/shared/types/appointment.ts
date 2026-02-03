@@ -2,6 +2,7 @@ export interface IAppointment {
     id: string;
     createdAt: string;
     updatedAt: string;
+
     masterId: string;
     clientId: string;
     serviceId: string;

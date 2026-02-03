@@ -1,18 +1,18 @@
 "use client";
 
 import { Calendar } from "@/components/calendar/Calendar";
-import { DashboardHeader } from "@/components/dashboard-header/DashboardHeader";
+import { DashboardMain } from "@/components/dashboard-main/DashboardMain";
 import { ScheduleBlock } from "@/components/schedule-block/ScheduleBlock";
 import { useState } from "react";
 
 export default function DashboardSchedulePage() {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+
     return (
-        <>
-            <DashboardHeader
-                title="Расписание"
-                description="Настраивайте рабочий график и управляйте доступным временем для записи клиентов."
-            />
+        <DashboardMain
+            title="Расписание"
+            description="Настраивайте рабочий график и управляйте доступным временем для записи клиентов."
+        >
             <div className="flex gap-4 items-start">
                 <Calendar
                     selectedDate={selectedDate}
@@ -20,6 +20,6 @@ export default function DashboardSchedulePage() {
                 />
                 <ScheduleBlock selectedDate={selectedDate} />
             </div>
-        </>
+        </DashboardMain>
     );
 }

@@ -1,49 +1,59 @@
 import { PagesConfig } from "@/shared/configs/pagesConfig";
-import { dynamicIconImports } from "lucide-react/dynamic";
+import {
+    Bell,
+    BriefcaseBusiness,
+    CalendarClock,
+    House,
+    Image,
+    List,
+    LucideIcon,
+    Settings,
+    Star,
+} from "lucide-react";
 
 export const sidebarMenu: Array<{
     title: string;
     href: string;
-    icon: keyof typeof dynamicIconImports;
+    icon: LucideIcon;
 }> = [
     {
         title: "Главная",
         href: PagesConfig.MAIN,
-        icon: "house",
+        icon: House,
     },
     {
         title: "Записи",
         href: PagesConfig.APPOINTMENTS,
-        icon: "list",
+        icon: List,
     },
     {
         title: "Услуги",
         href: PagesConfig.SERVICES,
-        icon: "briefcase-business",
+        icon: BriefcaseBusiness,
     },
     {
         title: "Расписание",
         href: PagesConfig.SCHEDULE,
-        icon: "calendar-clock",
+        icon: CalendarClock,
     },
     {
         title: "Уведомления",
         href: PagesConfig.NOTIFICATIONS,
-        icon: "bell",
+        icon: Bell,
     },
     {
         title: "Галерея",
         href: PagesConfig.GALLERY,
-        icon: "image",
+        icon: Image,
     },
     {
         title: "Отзывы",
         href: PagesConfig.REVIEWS,
-        icon: "star",
+        icon: Star,
     },
     {
         title: "Настройки",
         href: PagesConfig.SETTINGS,
-        icon: "settings",
+        icon: Settings,
     },
 ];
